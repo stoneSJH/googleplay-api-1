@@ -312,7 +312,7 @@ class GooglePlayAPI(object):
                  "suggestedQuery": e.suggestedQuery,
                  "title": e.title} for e in response.entry]
 
-    def search(self, query, nb_result, offset=None):
+    def search(self, query, nb_result=20, offset=None):
         """ Search the play store for an app.
 
         nb_result is the maximum number of result to be returned.
@@ -645,8 +645,8 @@ class GooglePlayAPI(object):
     def log(self, docid):
         log_request = googleplay_pb2.LogRequest()
         log_request.downloadConfirmationQuery = "confirmFreeDownload?doc=" + docid
-        timestamp = int(datetime.now().timestamp())
-        log_request.timestamp = timestamp
+        # timestamp = int(datetime.now().timestamp())
+        # log_request.timestamp = timestamp
 
         string_request = log_request.SerializeToString()
         response = requests.post(LOG_URL,
