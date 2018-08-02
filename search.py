@@ -1,3 +1,6 @@
+GOOGLE_LOGIN = GOOGLE_PASSWORD = AUTH_TOKEN = None
+
+from config import *
 from gpapi.googleplay import GooglePlayAPI, RequestError
 import sys
 
@@ -19,7 +22,7 @@ if (len(sys.argv) >= 3):
 if (len(sys.argv) >= 4):
     offset = int(sys.argv[3])
 
-server.login("stone.shijiahao@gmail.com", "zqxuxnlktqqjjluu", None, None)
+server.login(GOOGLE_LOGIN, GOOGLE_PASSWORD, None, None)
 
 apps = server.search(request, nb_res, offset)
 

@@ -1,5 +1,8 @@
+GOOGLE_LOGIN = GOOGLE_PASSWORD = AUTH_TOKEN = None
+
 from gpapi.googleplay import GooglePlayAPI, RequestError
 import sys
+from config import *
 
 server = GooglePlayAPI('it_IT', 'Europe/Rome')
 
@@ -16,7 +19,7 @@ if (len(sys.argv) == 3):
 else:
     filename = packagename + ".apk"
 
-server.login("stone.shijiahao@gmail.com", "zqxuxnlktqqjjluu", None, None)
+server.login(GOOGLE_LOGIN, GOOGLE_PASSWORD, None, None)
 # check whether this app can be downloaded
 # should return error if app not purchased
 fl = server.delivery(packagename)
