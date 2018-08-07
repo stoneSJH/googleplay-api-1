@@ -22,7 +22,15 @@ else:
 server.login(GOOGLE_LOGIN, GOOGLE_PASSWORD, None, None)
 
 fl = server.download(packagename)
+
 with open(filename, 'wb') as apk_file:
     for chunk in fl.get('file').get('data'):
         apk_file.write(chunk)
+    if fl['additionalData'] != []:
+        print('\nDownloading additional files\n')
+    for obb in fl['additionalData']:
+        name = obb['type'] + '.' + str(obb['versionCode']) + '.' + fl['docId'] + '.obb'
+        with open(name, 'wb') as second:
+            for chunk in obb.get('file').get('data'):
+                second.write(chunk)
     print('\nDownload successful\n')
