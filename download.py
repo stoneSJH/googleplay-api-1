@@ -4,7 +4,7 @@ from gpapi.googleplay import GooglePlayAPI, RequestError
 import sys
 from config import *
 
-server = GooglePlayAPI('it_IT', 'Europe/Rome')
+server = GooglePlayAPI('en_US', 'America/New_York')
 
 if (len(sys.argv) < 2):
     print "Usage: %s packagename [filename]"
@@ -20,9 +20,6 @@ else:
     filename = packagename + ".apk"
 
 server.login(GOOGLE_LOGIN, GOOGLE_PASSWORD, None, None)
-# check whether this app can be downloaded
-# should return error if app not purchased
-fl = server.delivery(packagename)
 
 fl = server.download(packagename)
 with open(filename, 'wb') as apk_file:

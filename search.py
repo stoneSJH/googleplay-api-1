@@ -4,7 +4,7 @@ from config import *
 from gpapi.googleplay import GooglePlayAPI, RequestError
 import sys
 
-server = GooglePlayAPI('it_IT', 'Europe/Rome')
+server = GooglePlayAPI('en_US', 'America/New_York')
 
 if (len(sys.argv) < 2):
     print "Usage: %s request [nb_results] [offset]" % sys.argv[0]
